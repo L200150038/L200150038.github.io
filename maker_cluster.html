@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: -7.604572, lng: 110.6644163}
+        });
+
+        // Create an array of alphabetical characters used to label the markers.
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [
+        {lat: -7.608576, lng: 110.647217},// water gong
+        {lat: -7.604572, lng: 110.644163},// waterboom
+        {lat: -7.604572, lng: 110.644027},// wisata mata air cokro : umbul ingas 
+        {lat: -7.609985, lng: 110.637862},//umbul besuki :umbul ingas
+        {lat: -7.613757, lng: 110.635830},// umbul ponggok
+		{lat: -7.593431, lng: 110.641884},// umbul nilo
+		{lat: -7.592491, lng: 110.644754},// umbul gede janti
+		{lat: -7.591637, lng: 110.650731},// umbul manten
+		{lat: -7.592354, lng: 110.648918},// umbul palem
+		{lat: -7.594592, lng: 110.645035},// lumintu
+		{lat: -7.611869, lng: 110.637381},// pancigan waduk galau ponggok
+		{lat: -7.611831, lng: 110.638750},// banyu mili
+		{lat: -7.597197, lng: 110.649963},// pancingan 37 dita sari
+		{lat: -7.592511, lng: 110.648265},// pancingan taman air 100
+		{lat: -7.593331, lng: 110.644196},// taman air 1000 janti
+		{lat: -7.593336, lng: 110.657322},// pancingan 77
+		{lat: -7.592297, lng: 110.657118},// tambak ikan wj
+		{lat: -7.592651, lng: 110.649897},// pancingan 47 tirta winahyu
+		{lat: -7.606218, lng: 110.648943},// river moon fun tubing,outbond camping
+		{lat: -7.602947, lng: 110.645400},// kolam renang umbul tirta
+		{lat: -7.591885, lng: 110.645413},// umbul asri rumah makan dan kolam renang
+		{lat: -7.598012, lng: 110.651055},// pancingan janti n0.99'nurlinda'
+		{lat: -7.595332, lng: 110.656946},// pancingan 25 dewi anjar
+      ]
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbhZHGwHAxmHUjNCoazHDrzFrd1Fv9dXA&callback=initMap">
+    </script>
+  </body>
+</html>
